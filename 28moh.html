@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes/No Buttons</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: "Courier New", Courier, monospace;
+            margin-top: 50px;
+        }
+
+        .wrapper {
+            display: inline-block;
+            margin-top: 20px;
+            max-width: 90%; /* لضبط العرض على الهواتف */
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px;
+            cursor: pointer;
+            width: 80%; /* لضبط الأزرار على الشاشات الصغيرة */
+            max-width: 200px; /* الحد الأقصى للعرض */
+        }
+
+        #yesBtn {
+            background-color: green;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: red;
+            color: white;
+        }
+
+        #bearImg {
+            margin-top: 20px;
+            display: block;
+            margin: 0 auto;
+            width: 100%; /* عرض الصورة بكامل الشاشة */
+            max-width: 500px; /* الحد الأقصى للعرض */
+            height: auto;
+        }
+
+        #question {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        /* استعلام الوسائط لأحجام الشاشات الصغيرة */
+        @media (max-width: 600px) {
+            #question {
+                font-size: 18px;
+            }
+
+            .btn {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <p id="question">Do you love me?</p>
+        <button id="yesBtn" class="btn">Yes</button>
+        <button id="noBtn" class="btn">No</button>
+        <img id="bearImg" src="C:\Users\ICON\Downloads\lm.jpg" alt="Bears Hugging">
+    </div>
+
+    <script>
+        const question = document.querySelector("#question");
+        const bearImg = document.querySelector("#bearImg");
+        const yesBtn = document.querySelector("#yesBtn");
+        const noBtn = document.querySelector("#noBtn");
+
+        yesBtn.addEventListener("click", () => {
+            question.innerHTML = "I love you too! 😊";
+            bearImg.src = "C:\\Users\\ICON\\Downloads\\om.jpg";  // الصورة الثانية بعد الضغط على Yes
+        });
+
+        noBtn.addEventListener("mouseover", () => {
+            const noBtnRect = noBtn.getBoundingClientRect();
+            const maxX = window.innerWidth - noBtnRect.width;
+            const maxY = window.innerHeight - noBtnRect.height;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+            noBtn.style.position = "absolute";
+        });
+    </script>
+
+</body>
+</html>
